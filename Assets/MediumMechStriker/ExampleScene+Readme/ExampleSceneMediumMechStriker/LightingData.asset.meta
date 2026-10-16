@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 891387551b98a4c4082b9a17ca039fbc
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 124342
+  packageName: Medium Mech Striker
+  packageVersion: 1.2
+  assetPath: Assets/MediumMechStriker/ExampleScene+Readme/ExampleSceneMediumMechStriker/LightingData.asset
+  uploadId: 960064
