@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class EnemyScript : MonoBehaviour
 {
     public NavMeshAgent agent;
+    public FieldOfView fieldOfView;
     public Vector3 currentPosition;
     public CollectionOfNodes collection;
 
@@ -20,6 +21,7 @@ public class EnemyScript : MonoBehaviour
 
     void Start()
     {
+        
         nodes = collection.nodeList;
 
         animator = GetComponent<Animator>();

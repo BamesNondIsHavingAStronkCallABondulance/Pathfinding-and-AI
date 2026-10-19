@@ -14,26 +14,31 @@ public class PatrolState : State //Pull from state not mono
     private Node selectedNode;
 
     private bool foundNode = false, searchingForNode = true;
-    float maxNodeRange = 20; //Should be modified for different enemies
+    float maxNodeRange = 15; //Should be modified for different enemies
 
 
 
     public override void Update()
     {
-        if(!CheckForValidNodes())
+        float dist = Vector3.Distance(enemy.goal, enemy.transform.position);
+
+        if (enemy.fieldOfView.canSeePlayer)
         {
-            ResetNodes();
-            Debug.Log("Resetting Nodes");
+            sm.ChangeState(sm.AttackState);
         }
 
         if (!foundNode)
         {
+            if (!CheckForValidNodes())
+            {
+                ResetNodes();
+                Debug.Log("Resetting Nodes");
+            }
+
             Debug.Log("Searching");
             SetGoal();
             FindNewNode();
         }
-
-        float dist = Vector3.Distance(enemy.goal, enemy.transform.position);
 
         if (dist <= 2)
         {
@@ -43,7 +48,7 @@ public class PatrolState : State //Pull from state not mono
         }
         else
         {
-            Debug.Log(dist);
+            //Debug.Log(dist);
         }
     }
 
@@ -74,24 +79,18 @@ public class PatrolState : State //Pull from state not mono
         while(searchingForNode)
         {
             float dist = Vector3.Distance(enemy.goal, enemy.currentPosition);
+            Debug.Log(dist);
 
-            if (dist < 20)
+            if (dist < 20 && selectedNode.visited == false)
             {
-                if (selectedNode.visited == false)
-                {
-                    searchingForNode = false;
-                }
-                else
-                {
-                    SetGoal();
-                }
+                searchingForNode = false;
             }
             else
             {
                 SetGoal();
             }
 
-            //searchingForNode = false;
+            //searchingForNode = false; //If removed, code breaks
         }
 
         enemy.agent.destination = enemy.goal;

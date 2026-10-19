@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class AttackState : State
 {
-    //public EnemyPatrol enemyPatrol;
-    public FieldOfView fov;
-
 
     public AttackState(EnemyScript enemy, StateMachine sm) : base(enemy, sm)
     {
@@ -17,6 +14,14 @@ public class AttackState : State
     // Update is called once per frame
     public override void Update()
     {
-        
+        if (enemy.fieldOfView.canSeePlayer)
+        {
+            //enemy.goal = enemy.player.transform.position;
+            Debug.Log("Sight");
+        }
+        else
+        {
+            sm.ChangeState(sm.PatrolState);
+        }
     }
 }
