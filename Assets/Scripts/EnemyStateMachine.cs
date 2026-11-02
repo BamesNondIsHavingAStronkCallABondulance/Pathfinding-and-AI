@@ -4,9 +4,9 @@ using UnityEngine;
 //Handles initialisation of states, switching of states
 //It handles calling Update and FixedUpdate for the currently active state
 
-public class StateMachine
+public class EnemyStateMachine
 {
-    public State currentState, lastState;
+    public EnemyState currentState, lastState;
 
     //declare all states here
     public PatrolState patrolState;
@@ -17,21 +17,21 @@ public class StateMachine
 
 
     //constructor
-    public StateMachine( EnemyScript enemy )
+    public EnemyStateMachine( EnemyScript enemy )
     {
         //initialise all states here
         patrolState = new PatrolState(enemy, this);
         attackState = new AttackState(enemy, this);
     }
 
-    public void Init(State startingState)
+    public void Init(EnemyState startingState)
     {
         currentState = startingState;
         lastState = null;
         startingState.Enter();
     }
 
-    public void ChangeState(State newState)
+    public void ChangeState(EnemyState newState)
     {
         currentState.Exit();
 

@@ -2,17 +2,15 @@
 //This is the base class 
 // It defines the common methods and fields that all other states inherit
 // You can include methods that you want to allow other states to use here
-
-using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
-public abstract class State
+public abstract class EnemyState
 {
     protected EnemyScript enemy;
-    protected StateMachine sm;
+    protected EnemyStateMachine sm;
 
     // base constructor
-    public State(EnemyScript enemy, StateMachine sm)
+    public EnemyState(EnemyScript enemy, EnemyStateMachine sm)
     {
         this.enemy = enemy;
         this.sm = sm;

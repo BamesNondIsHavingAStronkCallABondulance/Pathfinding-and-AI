@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.AI;
 using Unity.VisualScripting;
 
-public class PatrolState : State //Pull from state not mono
+public class PatrolState : EnemyState //Pull from state not mono
 {
-    public PatrolState(EnemyScript enemy, StateMachine sm) : base(enemy, sm)
+    public PatrolState(EnemyScript enemy, EnemyStateMachine sm) : base(enemy, sm)
     {
     }
 

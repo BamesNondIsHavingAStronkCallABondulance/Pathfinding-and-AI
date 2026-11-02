@@ -13,7 +13,7 @@ public class EnemyScript : MonoBehaviour
 
     public PlayerMove playerMove;
     public Animator animator;
-    StateMachine sm;
+    EnemyStateMachine sm;
 
     public Vector3 goal;
 
@@ -30,7 +30,7 @@ public class EnemyScript : MonoBehaviour
         nodes = collection.nodeList;
 
         animator = GetComponent<Animator>();
-        sm = new StateMachine(this);
+        sm = new EnemyStateMachine(this);
 
         sm.Init(sm.patrolState);
       

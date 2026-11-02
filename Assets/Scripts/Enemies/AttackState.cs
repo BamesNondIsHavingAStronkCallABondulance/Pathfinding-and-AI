@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class AttackState : State
+public class AttackState : EnemyState
 {
 
-    public AttackState(EnemyScript enemy, StateMachine sm) : base(enemy, sm)
+    public AttackState(EnemyScript enemy, EnemyStateMachine sm) : base(enemy, sm)
     {
     }
     void Start()
