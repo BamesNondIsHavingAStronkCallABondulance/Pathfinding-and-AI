@@ -9,8 +9,8 @@ public class StateMachine
     public State currentState, lastState;
 
     //declare all states here
-    public PatrolState PatrolState;
-    public AttackState AttackState;
+    public PatrolState patrolState;
+    public AttackState attackState;
     //public SearchState SearchState;
     //public HurtState hurtState;
     //public DeathState deathState;
@@ -20,8 +20,8 @@ public class StateMachine
     public StateMachine( EnemyScript enemy )
     {
         //initialise all states here
-        PatrolState = new PatrolState(enemy, this);
-        AttackState = new AttackState(enemy, this);
+        patrolState = new PatrolState(enemy, this);
+        attackState = new AttackState(enemy, this);
     }
 
     public void Init(State startingState)

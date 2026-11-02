@@ -11,6 +11,7 @@ public class EnemyScript : MonoBehaviour
     public Vector3 currentPosition;
     public CollectionOfNodes collection;
 
+    public PlayerMove playerMove;
     public Animator animator;
     StateMachine sm;
 
@@ -18,16 +19,20 @@ public class EnemyScript : MonoBehaviour
 
     public List<Node> nodes = new();
 
+    public GameObject player;
+
 
     void Start()
     {
-        
+        player = GameObject.Find("Player");
+        playerMove = player.GetComponent<PlayerMove>();
+
         nodes = collection.nodeList;
 
         animator = GetComponent<Animator>();
         sm = new StateMachine(this);
 
-        sm.Init(sm.PatrolState);
+        sm.Init(sm.patrolState);
       
 
         agent = GetComponent<NavMeshAgent>();

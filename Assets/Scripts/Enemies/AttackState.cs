@@ -14,14 +14,24 @@ public class AttackState : State
     // Update is called once per frame
     public override void Update()
     {
-        if (enemy.fieldOfView.canSeePlayer)
+        if (enemy.fieldOfView.canSeePlayer) //Want this to be in a coroutine to set timers
         {
-            //enemy.goal = enemy.player.transform.position;
+            enemy.agent.destination = enemy.player.transform.position; //Need to check if player is colliding with safe zone
             Debug.Log("Sight");
         }
         else
         {
-            sm.ChangeState(sm.PatrolState);
+            Debug.Log("Leaving chase");
+            sm.ChangeState(sm.patrolState);
+        }
+    }
+
+    public override void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            enemy.playerMove.playerHealth -= 1;
+            Debug.Log(enemy.playerMove.playerHealth);
         }
     }
 }

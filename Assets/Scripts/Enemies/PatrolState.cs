@@ -24,7 +24,9 @@ public class PatrolState : State //Pull from state not mono
 
         if (enemy.fieldOfView.canSeePlayer)
         {
-            sm.ChangeState(sm.AttackState);
+            foundNode = false;
+            searchingForNode = true;
+            sm.ChangeState(sm.attackState);
         }
 
         if (!foundNode)

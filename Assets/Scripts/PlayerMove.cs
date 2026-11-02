@@ -29,7 +29,7 @@ public class PlayerMove : MonoBehaviour
     private float lookAngle = 0f;
     private bool jumped = false;
 
-    float playerHealth;
+    public float playerHealth = 3;
     int playerScore, playerLives;
     string playerName;
 
